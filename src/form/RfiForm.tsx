@@ -192,9 +192,15 @@ export function RfiForm({
           onScroll={updateFade}
           className={["-mx-2 h-full px-2", fixed ? "overflow-y-auto" : ""].join(" ")}
         >
-          {/* Vertically centre the question in the available space; when a step
-              is taller than the frame it fills and scrolls from the top. */}
-          <div className="flex min-h-full flex-col justify-center py-2">
+          {/* Desktop: vertically centre the question. Immersive mobile flow
+              (fill): content sits at the top and the primary action is pinned to
+              the bottom. Either way, content taller than the frame scrolls. */}
+          <div
+            className={[
+              "flex min-h-full flex-col py-2",
+              mode === "fullscreen" ? "flow-fill" : "justify-center",
+            ].join(" ")}
+          >
             <Screen step={step} answers={answers} errors={errors} dispatch={dispatch} />
           </div>
         </div>

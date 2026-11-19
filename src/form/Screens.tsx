@@ -199,7 +199,7 @@ const SCREENS: Record<StepId, (p: Props) => ReactElement> = {
           You gave us {place(answers)}. The street address lets your expert
           estimate for your specific home.
         </Lede>
-        <form onSubmit={onSubmit} className="flex flex-col gap-3.5" noValidate>
+        <form onSubmit={onSubmit} className="step-form flex flex-col gap-3.5" noValidate>
           <Field
             id="street"
             label="Street address"
@@ -211,7 +211,9 @@ const SCREENS: Record<StepId, (p: Props) => ReactElement> = {
             error={errors.street}
             onChange={(e) => dispatch({ type: "setField", key: "street", value: e.target.value })}
           />
-          <Cta type="submit">Continue</Cta>
+          <div className="step-cta">
+            <Cta type="submit">Continue</Cta>
+          </div>
         </form>
       </>
     );
@@ -292,7 +294,7 @@ const SCREENS: Record<StepId, (p: Props) => ReactElement> = {
       <>
         <Heading>Where are most of them?</Heading>
         <Lede>A city or ZIP code is enough for now.</Lede>
-        <form onSubmit={onSubmit} className="flex flex-col gap-3.5" noValidate>
+        <form onSubmit={onSubmit} className="step-form flex flex-col gap-3.5" noValidate>
           <Field
             id="market"
             label="City or ZIP code"
@@ -305,7 +307,9 @@ const SCREENS: Record<StepId, (p: Props) => ReactElement> = {
               dispatch({ type: "setField", key: "market", value: e.target.value })
             }
           />
-          <Cta type="submit">Next</Cta>
+          <div className="step-cta">
+            <Cta type="submit">Next</Cta>
+          </div>
         </form>
       </>
     );
@@ -359,7 +363,7 @@ function LocationScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
           autoCapitalize="words"
           autoCorrect="off"
           spellCheck={false}
-          hint='Prototype: try "pine", "harbor" or any 5-digit ZIP.'
+          hint="Start typing an address, or enter a 5-digit ZIP."
           error={errors.locText}
           value={answers.locText}
           onChange={(e) =>
@@ -437,7 +441,7 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
   return (
     // Single wrapper so spacing is tuned for the peak (tighter than the default
     // screen rhythm) and the CTA stays in view inside the fixed-height card.
-    <div className="flex flex-col gap-3.5">
+    <div className="step-form flex flex-col gap-3.5">
       <Heading>
         {bedsLabel(answers)} near {place(answers)} typically earn
       </Heading>
@@ -452,8 +456,7 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
           a year in bookings
         </div>
         <div className="mt-2.5 text-[12.5px] leading-relaxed text-muted">
-          Sample figures for this prototype — a range based on similar rentals
-          nearby, not a promise.
+          A range based on similar rentals nearby — not a guarantee.
         </div>
       </div>
 
@@ -480,7 +483,7 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
       <button
         type="button"
         onClick={() => dispatch({ type: "toContact" })}
-        className="mt-1 min-h-[58px] w-full rounded-lg bg-action px-5 text-[18px] font-bold text-action-ink shadow-pop transition-colors hover:bg-action-hover"
+        className="step-cta mt-1 min-h-[58px] w-full rounded-lg bg-action px-5 text-[18px] font-bold text-action-ink shadow-pop transition-colors hover:bg-action-hover"
       >
         Get my detailed estimate
       </button>
@@ -507,7 +510,7 @@ function ContactScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
           : "A local expert reaches out within one business day."}
       </Lede>
 
-      <form onSubmit={onSubmit} className="flex flex-col gap-2.5" noValidate>
+      <form onSubmit={onSubmit} className="step-form flex flex-col gap-2.5" noValidate>
         <Field
           id="name"
           label="Full name"
@@ -545,9 +548,9 @@ function ContactScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
             dispatch({ type: "setField", key: "phone", value: formatPhone(e.target.value) })
           }
         />
-        {/* CTA + consent pinned to the bottom so the button is always reachable
-            when fields overflow (e.g. in the mobile full-screen flow). */}
-        <div className="sticky bottom-0 -mx-2 mt-1 flex flex-col gap-2 bg-surface px-2 pt-3 pb-1 shadow-[0_-10px_12px_-10px_rgba(16,59,68,0.12)]">
+        {/* In the immersive mobile flow this is pushed to the bottom (thumb
+            zone); on desktop it sits inline below the fields. */}
+        <div className="step-cta mt-1 flex flex-col gap-2 pt-1">
           <Cta type="submit">{multi ? "Request a call" : "Send my estimate"}</Cta>
           <p className="text-[12.5px] leading-relaxed text-muted">
             By continuing you agree Evolve may call, text or email you about
@@ -609,7 +612,7 @@ function DoneScreen({ answers, dispatch }: { answers: Answers; dispatch: (a: Act
         <strong className="text-ink">Rather pick a time?</strong>
         {answers.slot ? (
           <p className="font-semibold text-go-deep">
-            Booked for {answers.slot}. (Prototype only.)
+            Booked for {answers.slot}.
           </p>
         ) : (
           <div className="flex flex-col gap-2.5">
@@ -656,7 +659,7 @@ function ExitBox({
     return (
       <div className="rounded-lg bg-go-soft/60 p-4">
         <p className="font-semibold text-go-deep">
-          Thanks. We'll email {answers.exitEmail}. (Prototype only.)
+          Thanks — we'll email {answers.exitEmail}.
         </p>
       </div>
     );

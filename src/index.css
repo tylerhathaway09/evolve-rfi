@@ -94,4 +94,19 @@
       animation: none;
     }
   }
+
+  /* Fill layout for the immersive mobile flow: the step fills the frame so the
+     question/content sits at the top and the primary action (.step-cta) is
+     pushed to the bottom (thumb zone). Inert on desktop, where the frame
+     vertically centres its content instead. */
+  .flow-fill > .step-enter {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .flow-fill .step-form {
+    flex: 1 1 auto;
+  }
+  .flow-fill .step-cta {
+    margin-top: auto;
+  }
 }
