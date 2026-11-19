@@ -187,6 +187,36 @@ const SCREENS: Record<StepId, (p: Props) => ReactElement> = {
 
   estimate: ({ answers, dispatch }) => <EstimateScreen answers={answers} dispatch={dispatch} />,
 
+  street: ({ answers, errors, dispatch }) => {
+    const onSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      dispatch({ type: "submitStreet" });
+    };
+    return (
+      <>
+        <Heading>What's the exact address?</Heading>
+        <Lede>
+          You gave us {place(answers)}. The street address lets your expert
+          estimate for your specific home.
+        </Lede>
+        <form onSubmit={onSubmit} className="flex flex-col gap-3.5" noValidate>
+          <Field
+            id="street"
+            label="Street address"
+            type="text"
+            autoComplete="street-address"
+            autoCorrect="off"
+            placeholder="123 Main St"
+            value={answers.street}
+            error={errors.street}
+            onChange={(e) => dispatch({ type: "setField", key: "street", value: e.target.value })}
+          />
+          <Cta type="submit">Continue</Cta>
+        </form>
+      </>
+    );
+  },
+
   contact: ({ answers, errors, dispatch }) => <ContactScreen answers={answers} errors={errors} dispatch={dispatch} />,
 
   done: ({ answers, dispatch }) => <DoneScreen answers={answers} dispatch={dispatch} />,
@@ -460,7 +490,6 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
 
 function ContactScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
   const multi = answers.path === "multi";
-  const needStreet = !multi && answers.loc != null && answers.loc.kind !== "address";
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -474,11 +503,11 @@ function ContactScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
       </Heading>
       <Lede>
         {multi
-          ? "One specialist will look at all your properties and get in touch."
-          : "A local expert prepares it and reaches out within one business day."}
+          ? "One specialist reviews your properties and gets in touch."
+          : "A local expert reaches out within one business day."}
       </Lede>
 
-      <form onSubmit={onSubmit} className="flex flex-col gap-3" noValidate>
+      <form onSubmit={onSubmit} className="flex flex-col gap-2.5" noValidate>
         <Field
           id="name"
           label="Full name"
@@ -509,30 +538,15 @@ function ContactScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
           inputMode="tel"
           autoComplete="tel"
           placeholder="(555) 123-4567"
-          hint="So your expert can reach you about your estimate."
+          hint="So we can reach you about your estimate."
           value={answers.phone}
           error={errors.phone}
           onChange={(e) =>
             dispatch({ type: "setField", key: "phone", value: formatPhone(e.target.value) })
           }
         />
-        {needStreet && (
-          <Field
-            id="street"
-            label="Street address of the property"
-            type="text"
-            autoComplete="street-address"
-            autoCorrect="off"
-            hint={`You gave us ${place(answers)}. The exact address lets us estimate for your home.`}
-            value={answers.street}
-            error={errors.street}
-            onChange={(e) => dispatch({ type: "setField", key: "street", value: e.target.value })}
-          />
-        )}
-
-        {/* CTA + consent stay pinned to the bottom of the card: when the fields
-            overflow (e.g. the extra street field), the button never scrolls out
-            of reach. On short viewports it sits naturally at the end. */}
+        {/* CTA + consent pinned to the bottom so the button is always reachable
+            when fields overflow (e.g. in the mobile full-screen flow). */}
         <div className="sticky bottom-0 -mx-2 mt-1 flex flex-col gap-2 bg-surface px-2 pt-3 pb-1 shadow-[0_-10px_12px_-10px_rgba(16,59,68,0.12)]">
           <Cta type="submit">{multi ? "Request a call" : "Send my estimate"}</Cta>
           <p className="text-[12.5px] leading-relaxed text-muted">

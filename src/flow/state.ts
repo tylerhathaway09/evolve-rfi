@@ -91,6 +91,7 @@ export type Action =
   | { type: "submitLocation" }
   // other submits / transitions
   | { type: "toContact" }
+  | { type: "submitStreet" }
   | { type: "submitMarket" }
   | { type: "submitContact" }
   | { type: "submitExit" }
@@ -200,8 +201,19 @@ export function reducer(state: FlowState, action: Action): FlowState {
       return fail(state, { locText: "Enter an address or a 5-digit ZIP code." });
     }
 
-    case "toContact":
+    case "toContact": {
+      // Owners who gave a ZIP or free text are asked for the exact street on its
+      // own quick step before contact; owners who picked a full address skip it.
+      const needStreet = a.loc != null && a.loc.kind !== "address";
+      return push(state, needStreet ? "street" : "contact");
+    }
+
+    case "submitStreet": {
+      if (a.street.trim().length < 4) {
+        return fail(state, { street: "Enter the street address of the property." });
+      }
       return push(state, "contact");
+    }
 
     case "submitMarket": {
       if (a.market.trim().length < 2) {
@@ -217,10 +229,6 @@ export function reducer(state: FlowState, action: Action): FlowState {
         errors.email = "Enter an email address, like name@example.com.";
       if (digits(a.phone).length < 10)
         errors.phone = "Enter a 10-digit phone number.";
-      const needStreet =
-        a.path !== "multi" && a.loc != null && a.loc.kind !== "address";
-      if (needStreet && a.street.trim().length < 4)
-        errors.street = "Enter the street address of the property.";
       if (Object.keys(errors).length) return fail(state, errors);
       return push(state, "done");
     }

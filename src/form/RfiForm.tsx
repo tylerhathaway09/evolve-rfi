@@ -32,10 +32,11 @@ export function RfiForm({
   onClose?: () => void;
 }) {
   const { state, step, path, answers, errors, errorSeq, dispatch } = flow;
-  // Only the full-screen mobile flow pins a fixed height with an internal
-  // scroll. On the desktop dedicated page the card sizes to its content (there
-  // is nothing below it to shift), so the final step never needs scrolling.
-  const fixed = mode === "fullscreen";
+  // Desktop and the full-screen mobile flow both use a STABLE frame: progress
+  // and controls pinned at the top, the question content vertically centred in
+  // the space below (Typeform-style). The frame is a fixed height so it never
+  // fluctuates step to step; content taller than the frame scrolls inside it.
+  const fixed = mode === "desktop" || mode === "fullscreen";
   const cardRef = useRef<HTMLDivElement>(null);
   // The internal scroll region (fixed-height card on desktop).
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -111,7 +112,10 @@ export function RfiForm({
       className={[
         "flex flex-col bg-surface",
         mode === "desktop"
-          ? "min-h-[420px] rounded-2xl p-7 shadow-card"
+          ? // A stable frame sized to the viewport (capped), so it fits the
+            // tall contact step without scrolling and never changes height
+            // between steps.
+            "h-[min(760px,calc(100dvh-92px))] rounded-2xl p-7 shadow-card"
           : mode === "fullscreen"
             ? "h-full rounded-none p-5"
             : "min-h-0 rounded-none p-5 shadow-none",
@@ -188,7 +192,9 @@ export function RfiForm({
           onScroll={updateFade}
           className={["-mx-2 h-full px-2", fixed ? "overflow-y-auto" : ""].join(" ")}
         >
-          <div className="flex min-h-full flex-col pb-2">
+          {/* Vertically centre the question in the available space; when a step
+              is taller than the frame it fills and scrolls from the top. */}
+          <div className="flex min-h-full flex-col justify-center py-2">
             <Screen step={step} answers={answers} errors={errors} dispatch={dispatch} />
           </div>
         </div>

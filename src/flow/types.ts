@@ -18,6 +18,7 @@ export type StepId =
   | "renting"
   | "furnished"
   | "estimate"
+  | "street"
   | "contact"
   | "done"
   // multi path

@@ -62,7 +62,7 @@ export function DesktopView({ flow }: { flow: UseFlow }) {
       </div>
 
       {/* Form panel */}
-      <div className="flex items-center justify-center bg-paper px-6 py-12 lg:px-10">
+      <div className="flex items-center justify-center bg-paper px-6 py-6 lg:px-10">
         <div className="w-full max-w-[480px]">
           <RfiForm flow={flow} mode="desktop" />
         </div>
