@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+/* ----------------------------------------------------------------------------
+   Base layer — page defaults built on the tokens above.
+   ---------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* A single, visible focus ring everywhere — keyboard users must never lose
+     their place. */
+  :focus-visible {
+    outline: 3px solid var(--color-action);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-body);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Utilities / small components that are reused across screens.
+   ---------------------------------------------------------------------------- */
+@layer components {
+  /* Screen-reader-only text */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Step enter transition — respects reduced motion. */
+  .step-enter {
+    animation: stepIn 0.28s var(--ease-out) both;
+  }
+  @keyframes stepIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .step-enter {
+      animation: none;
+    }
+  }
+}

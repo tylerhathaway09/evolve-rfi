@@ -1,0 +1,69 @@
+/* ============================================================================
+   DESIGN TOKENS — the single source of truth for the refreshed Evolve style.
+   Every colour, font, radius and spacing value lives here. Change a value and
+   it propagates everywhere (Tailwind v4 generates utilities from these vars:
+   --color-action -> bg-action/text-action, --radius-lg -> rounded-lg, etc.).
+
+   Starting points are Evolve's live site, estimated by eye from screenshots.
+   The refresh: fewer colours doing clearer jobs — one for ACTIONS, one for
+   PROGRESS + SUCCESS, neutrals for everything else. Plum and teal are used as
+   occasional brand moments, not on every element.
+   ============================================================================ */
+
+@theme {
+  /* ---- Brand: actions -------------------------------------------------- */
+  /* The one colour that means "do the thing". Evolve purple, cleaned up. */
+  --color-action: #9342b8;
+  --color-action-hover: #7c3499;
+  --color-action-ink: #ffffff;
+  --color-action-soft: #f3e9f8; /* tinted background wash of the action hue */
+
+  /* ---- Brand: progress + success -------------------------------------- */
+  /* The one colour that means "going well". Derived from Evolve's teal,
+     deepened for legible contrast on white. */
+  --color-go: #1f7f8c;
+  --color-go-deep: #155c66; /* text weight for success copy */
+  --color-go-soft: #e4f0f1;
+
+  /* ---- Brand moments (used sparingly) --------------------------------- */
+  --color-plum: #3a1740; /* deep band — the estimate peak, footer accents */
+  --color-plum-ink: #f7eef9;
+  --color-teal: #3aa6b9; /* wordmark / light brand touches */
+  --color-lime: #c4d52e; /* a single celebratory spark, not for text */
+
+  /* ---- Neutrals -------------------------------------------------------- */
+  --color-ink: #103b44; /* headings + body: very dark teal */
+  --color-muted: #566b6f; /* secondary text (meets 4.5:1 on white) */
+  --color-line: #d7dcd5; /* hairlines + unselected borders */
+  --color-line-strong: #b4bdba;
+  --color-surface: #ffffff; /* cards */
+  --color-paper: #f4f1ec; /* warm off-white page tint */
+  --color-tint: #eef1ec; /* form section background */
+  --color-error: #b3261e;
+  --color-error-soft: #fbeae8;
+
+  /* ---- Type ------------------------------------------------------------ */
+  /* Heavy geometric sans for headings, rounded sans for body — sized for an
+     audience that skews 50+. Body never below 17px on mobile. */
+  --font-heading:
+    "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-base: 1.0625rem; /* 17px baseline body */
+  --text-base--line-height: 1.6;
+
+  /* ---- Radius ---------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+
+  /* ---- Elevation ------------------------------------------------------- */
+  --shadow-card: 0 1px 2px rgba(16, 59, 68, 0.04), 0 8px 24px rgba(16, 59, 68, 0.06);
+  --shadow-sticky: 0 -2px 16px rgba(16, 59, 68, 0.1);
+  --shadow-pop: 0 12px 40px rgba(16, 59, 68, 0.16);
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
