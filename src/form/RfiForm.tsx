@@ -32,7 +32,10 @@ export function RfiForm({
   onClose?: () => void;
 }) {
   const { state, step, path, answers, errors, errorSeq, dispatch } = flow;
-  const fixed = mode === "desktop" || mode === "fullscreen";
+  // Only the full-screen mobile flow pins a fixed height with an internal
+  // scroll. On the desktop dedicated page the card sizes to its content (there
+  // is nothing below it to shift), so the final step never needs scrolling.
+  const fixed = mode === "fullscreen";
   const cardRef = useRef<HTMLDivElement>(null);
   // The internal scroll region (fixed-height card on desktop).
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -108,7 +111,7 @@ export function RfiForm({
       className={[
         "flex flex-col bg-surface",
         mode === "desktop"
-          ? "h-[640px] rounded-2xl p-7 shadow-card"
+          ? "min-h-[420px] rounded-2xl p-7 shadow-card"
           : mode === "fullscreen"
             ? "h-full rounded-none p-5"
             : "min-h-0 rounded-none p-5 shadow-none",
