@@ -193,6 +193,10 @@ phone for owners who are only exploring.
 - Draft copy needing Evolve/legal sign-off: "within one business day", the three
   estimate-screen proof points, and the consent sentence.
 
+## Credits
+
+- Desktop hero photo: [Unsplash](https://unsplash.com) (free license).
+
 ## Out of scope
 
 Real submission / email / SMS / CRM / scheduling, a real address or revenue API,
