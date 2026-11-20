@@ -88,8 +88,8 @@ the mobile experience inside a phone frame — handy for the walkthrough video.
 | **Front-loaded progress bar** | Villar et al. (2013): fast-start progress bars reduce drop-off. |
 | **Primary metric = SQLs per starter** | Guards against an optimistic estimate lifting completion but hurting close rate. |
 
-Fuller diagnosis, evidence strength, and sources are in
-[`../evolve-rfi-handoff/evolve-rfi-handoff/RESEARCH.md`](../evolve-rfi-handoff/evolve-rfi-handoff/RESEARCH.md).
+The fuller diagnosis, evidence strength, and sources behind these decisions are
+covered in the video walkthrough.
 
 ---
 
@@ -154,8 +154,8 @@ completion works.
 
 ## Expected lift (hypotheses to test)
 
-Modelled estimates, not forecasts. Full basis and confidence levels in
-`RESEARCH.md`.
+Modelled estimates, not forecasts. The full basis and confidence levels are
+walked through in the video.
 
 | Change | Step | Estimate |
 |---|---|---|
