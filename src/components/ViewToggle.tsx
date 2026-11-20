@@ -20,7 +20,7 @@ export function ViewToggle({
     <div
       role="group"
       aria-label="Preview layout"
-      className="fixed right-4 top-24 z-40 w-44 rounded-2xl border border-line bg-surface p-2 shadow-pop"
+      className="fixed right-4 top-4 z-50 w-44 rounded-2xl border border-line bg-surface p-2 shadow-pop"
     >
       <p className="px-2 pb-1.5 pt-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
         Preview
