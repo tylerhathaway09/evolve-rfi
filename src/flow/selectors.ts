@@ -31,7 +31,7 @@ export function rangeDisplay(a: Answers): string {
   return getRange(a.beds, place(a)).display;
 }
 
-/** "Studios" / "2-bedroom homes" — the subject of the estimate sentence. */
+/** "Studios" / "2-bedroom homes" - the subject of the estimate sentence. */
 export function bedsLabel(a: Answers): string {
   if (!a.beds) return "homes";
   return a.beds === "Studio" ? "Studios" : `${a.beds}-bedroom homes`;
@@ -93,7 +93,7 @@ export function stepAnswer(a: Answers, id: string): string {
   }
 }
 
-/** Build the lead object sales receives. Nothing is sent — this is logged and
+/** Build the lead object sales receives. Nothing is sent - this is logged and
  *  rendered only. */
 export function buildLead(a: Answers): Lead {
   const path = pathOf(a);

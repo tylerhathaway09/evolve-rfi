@@ -1,5 +1,5 @@
 /* ============================================================================
-   Desktop: the real Evolve RFI page (start.evolve.com) — a full-bleed vacation
+   Desktop: the real Evolve RFI page (start.evolve.com) - a full-bleed vacation
    home photo with the brand/promise over it and the form card floating on the
    right. The photo grounds it as a genuine Evolve experience; the form (our
    redesign) is the focus.
@@ -34,7 +34,7 @@ export function DesktopView({ flow }: { flow: UseFlow }) {
             See what your vacation home could earn.
           </h1>
           <p className="mt-5 max-w-md text-[18px] leading-relaxed text-white/85 sm:text-[20px]">
-            Full-service vacation rental management — Evolve handles the
+            Full-service vacation rental management. Evolve handles the
             marketing, pricing, and guest support, and you keep control of
             your home.
           </p>

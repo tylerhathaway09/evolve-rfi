@@ -1,5 +1,5 @@
 /* ============================================================================
-   Shared form primitives. Big tap targets, visible focus, strong contrast —
+   Shared form primitives. Big tap targets, visible focus, strong contrast -
    tuned for an audience that skews 50+ and mobile. Body text never below 17px.
 
    Selected state uses a soft fill + trailing check (NOT a heavy ring) so it
@@ -202,7 +202,7 @@ export function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
-/** The screen heading — focus lands here on each step change. */
+/** The screen heading - focus lands here on each step change. */
 export function Heading({ children }: { children: ReactNode }) {
   return (
     <h1

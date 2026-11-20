@@ -3,7 +3,7 @@
 
    Ships a MOCK lookup so the prototype is self-contained. The real thing would
    call Evolve's revenue model (comparable nearby rentals x bedrooms x season).
-   The result is deliberately a RANGE, labelled as sample data in the UI — an
+   The result is deliberately a RANGE, labelled as sample data in the UI - an
    over-confident point estimate can lift completion but hurt close rate later.
 
    Swap the implementation behind `EstimateService` without touching callers.

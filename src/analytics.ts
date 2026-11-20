@@ -1,5 +1,5 @@
 /* ============================================================================
-   Analytics. `track()` logs to the console — nothing leaves the browser.
+   Analytics. `track()` logs to the console - nothing leaves the browser.
 
    This is the backbone of the "how I'd validate" story: every event carries the
    step id, the path and the device width, so results can be split by step and

@@ -1,5 +1,5 @@
 /* ============================================================================
-   Type-set wordmark. Deliberately NOT Evolve's logo file — a recognisable
+   Type-set wordmark. Deliberately NOT Evolve's logo file - a recognisable
    lowercase teal wordmark with a simple drawn mark, per the brief.
    ============================================================================ */
 

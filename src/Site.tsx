@@ -38,7 +38,7 @@ export function Site() {
     <div id="top" className="min-h-screen bg-paper">
       <CaseStudyBar />
 
-      {/* Desktop/Mobile preview control — desktop viewport only. */}
+      {/* Desktop/Mobile preview control - desktop viewport only. */}
       {!isNarrow && <ViewToggle mode={mode} onChange={setOverride} />}
 
       {framed ? <div className="bg-ink/5">{body}</div> : body}

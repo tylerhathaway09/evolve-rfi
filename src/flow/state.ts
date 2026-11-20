@@ -2,7 +2,7 @@
    The flow reducer: one object holding answers + history + errors, plus the
    transitions between screens. History is a stack so Back is "pop" and earlier
    answers are always kept. Persisted to sessionStorage so a refresh mid-form
-   does not lose progress (wrapped in try/catch — private mode, quota, etc.).
+   does not lose progress (wrapped in try/catch - private mode, quota, etc.).
    ============================================================================ */
 
 import { suggest, type AddressSuggestion } from "../services/address";
@@ -276,7 +276,7 @@ export function persist(state: FlowState): void {
   try {
     sessionStorage.setItem(KEY, JSON.stringify(state));
   } catch {
-    // Private mode / quota / disabled storage — progress just isn't saved.
+    // Private mode / quota / disabled storage - progress just isn't saved.
   }
 }
 

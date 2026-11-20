@@ -1,6 +1,6 @@
 /* ============================================================================
    Stub of the next section, so the form visibly sits inside a longer page.
-   Placeholder cards only — nothing here is interactive.
+   Placeholder cards only - nothing here is interactive.
    ============================================================================ */
 
 const PLANS = [
@@ -45,7 +45,7 @@ export function NextSection({ mobile = false }: { mobile?: boolean }) {
             </span>
             <p className="text-[15px] leading-relaxed text-muted">{p.blurb}</p>
             <span className="mt-2 text-[14px] font-semibold text-muted/70">
-              Placeholder — outside the case study scope
+              Placeholder - outside the case study scope
             </span>
           </div>
         ))}

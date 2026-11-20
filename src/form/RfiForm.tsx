@@ -1,6 +1,6 @@
 /* ============================================================================
    The form card: progress bar, Back control, the current screen, and the
-   focus/scroll management the brief calls for — focus moves to the heading (or
+   focus/scroll management the brief calls for - focus moves to the heading (or
    the first invalid field) on each step change, and the heading is brought to
    the top of the viewport.
    ============================================================================ */
@@ -96,7 +96,7 @@ export function RfiForm({
     }
     updateFade();
     // Initial mount (and StrictMode's re-invoke) do nothing: no scroll, no steal.
-    // Re-run on a real screen change or a failed submit — not on every keystroke.
+    // Re-run on a real screen change or a failed submit - not on every keystroke.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, errorSeq]);
 

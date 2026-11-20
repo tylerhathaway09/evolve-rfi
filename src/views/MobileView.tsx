@@ -1,7 +1,7 @@
 /* ============================================================================
    Mobile (the primary audience). Best practice for a conversion-critical
    multi-step lead form on a phone: the marketing page is the INVITATION, and
-   once the owner starts, the flow takes over the full screen — one question at
+   once the owner starts, the flow takes over the full screen - one question at
    a time, progress pinned on top, primary action in the thumb zone, nothing
    competing. That reads unmistakably as a form and removes any "page shifting"
    as step heights change (each step owns the screen).
@@ -51,7 +51,7 @@ function MobileFlow({
     >
       {/* On a real device the full-screen flow covers the page's disclaimer bar,
           so repeat it here. In the desktop preview the canvas bar above the
-          frame already shows it — don't duplicate. */}
+          frame already shows it - don't duplicate. */}
       {!framed && (
         <div className="flex-none bg-ink px-4 py-1.5 text-center text-[11px] leading-snug text-white/85">
           Case study prototype · Not an Evolve website · No data collected
@@ -80,7 +80,7 @@ function MobileLanding({ flow, onStart }: { flow: UseFlow; onStart: () => void }
           See what your vacation home could earn.
         </h1>
         <p className="mt-3 text-[17px] leading-relaxed text-muted">
-          Six quick questions, then an earnings range — before you ever talk to
+          Six quick questions, then an earnings range, before you ever talk to
           anyone.
         </p>
 

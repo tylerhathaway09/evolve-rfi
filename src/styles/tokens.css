@@ -1,11 +1,11 @@
 /* ============================================================================
-   DESIGN TOKENS — the single source of truth for the refreshed Evolve style.
+   DESIGN TOKENS - the single source of truth for the refreshed Evolve style.
    Every colour, font, radius and spacing value lives here. Change a value and
    it propagates everywhere (Tailwind v4 generates utilities from these vars:
    --color-action -> bg-action/text-action, --radius-lg -> rounded-lg, etc.).
 
    Starting points are Evolve's live site, estimated by eye from screenshots.
-   The refresh: fewer colours doing clearer jobs — one for ACTIONS, one for
+   The refresh: fewer colours doing clearer jobs - one for ACTIONS, one for
    PROGRESS + SUCCESS, neutrals for everything else. Plum and teal are used as
    occasional brand moments, not on every element.
    ============================================================================ */
@@ -26,7 +26,7 @@
   --color-go-soft: #e4f0f1;
 
   /* ---- Brand moments (used sparingly) --------------------------------- */
-  --color-plum: #3a1740; /* deep band — the estimate peak, footer accents */
+  --color-plum: #3a1740; /* deep band - the estimate peak, footer accents */
   --color-plum-ink: #f7eef9;
   --color-teal: #3aa6b9; /* wordmark / light brand touches */
   --color-lime: #c4d52e; /* a single celebratory spark, not for text */
@@ -43,7 +43,7 @@
   --color-error-soft: #fbeae8;
 
   /* ---- Type ------------------------------------------------------------ */
-  /* Heavy geometric sans for headings, rounded sans for body — sized for an
+  /* Heavy geometric sans for headings, rounded sans for body - sized for an
      audience that skews 50+. Body never below 17px on mobile. */
   --font-heading:
     "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;

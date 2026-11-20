@@ -85,7 +85,7 @@ export interface Answers {
  */
 export interface Lead {
   path: Path;
-  /** What the owner typed (one field — less friction on mobile). */
+  /** What the owner typed (one field - less friction on mobile). */
   name: string;
   /** Derived on submit so sales/CRM still gets structured first/last. */
   firstName: string;

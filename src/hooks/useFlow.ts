@@ -1,5 +1,5 @@
 /* ============================================================================
-   useFlow — binds the reducer to React, persists to sessionStorage, and fires
+   useFlow - binds the reducer to React, persists to sessionStorage, and fires
    analytics as a side effect of real user transitions (not on every render, so
    React StrictMode's double-invoke never double-counts).
    ============================================================================ */

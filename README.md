@@ -1,11 +1,11 @@
-# Evolve Owner RFI — redesign prototype
+# Evolve Owner RFI - redesign prototype
 
-A redesign of Evolve's owner **Request-for-Information (RFI)** flow — the short
+A redesign of Evolve's owner **Request-for-Information (RFI)** flow - the short
 form a property owner completes before talking to sales. Built as a case study
 for a Senior Product Designer, Growth interview by Tyler Hathaway.
 
 > **This is not an Evolve website and collects no data.** Every figure and
-> address is sample data. Nothing is submitted anywhere — on completion the lead
+> address is sample data. Nothing is submitted anywhere - on completion the lead
 > object is logged to the browser console (open DevTools to see it).
 
 **Live link:** https://evolve-rfi.vercel.app
@@ -27,7 +27,7 @@ The audience skews older (the prototype assumes ~50+) and is **heavily mobile**.
 Show the owner an **earnings range before asking for contact details**, screen
 out ineligible properties early, and reframe the contact ask so it feels like a
 next step rather than a gate. Success is measured as **sales-qualified leads per
-starter**, not raw completions — so "someone takes the number and leaves" is a
+starter**, not raw completions - so "someone takes the number and leaves" is a
 tracked outcome, not a silent loss.
 
 ---
@@ -49,8 +49,8 @@ Node 20+ recommended. No environment variables, no backend.
 ### Two views, one flow
 
 - **Desktop** is the **dedicated RFI page** (the model Evolve ships at
-  start.evolve.com): a focused split — a brand/promise panel on the left, the
-  form on the right — with no marketing page around it. The form card is a fixed
+  start.evolve.com): a focused split - a brand/promise panel on the left, the
+  form on the right - with no marketing page around it. The form card is a fixed
   height so step-to-step content changes never shift the layout.
 - **Mobile** (the primary audience) is a compact **invitation** → a **full-screen
   immersive flow**: one question filling the screen, progress pinned on top,
@@ -58,7 +58,7 @@ Node 20+ recommended. No environment variables, no backend.
   pattern for a conversion-critical multi-step form and keeps focus on completion.
 
 A floating **Desktop / Mobile** preview toggle (top-right, desktop only) renders
-the mobile experience inside a phone frame — handy for the walkthrough video.
+the mobile experience inside a phone frame - handy for the walkthrough video.
 
 ### Try these
 
@@ -79,7 +79,7 @@ the mobile experience inside a phone frame — handy for the walkthrough video.
 
 | Decision | Why |
 |---|---|
-| **Earnings range before the contact ask** | Attacks the 35% contact drop-off — give something before asking. Competitors (Vacasa, Airbnb, Opendoor) all lead with an estimate. Largest upside, least certain → a test. |
+| **Earnings range before the contact ask** | Attacks the 35% contact drop-off - give something before asking. Competitors (Vacasa, Airbnb, Opendoor) all lead with an estimate. Largest upside, least certain → a test. |
 | **Early eligibility screen** | Timeshares / private rooms / "something else" get a polite exit instead of reaching sales, protecting lead quality and the owner's time. |
 | **Address: suggestions + a reason + ZIP accepted** | Attacks the 30% address drop-off: less typing, a stated reason, and a lower-commitment way in. ZIP gives an area estimate now; the street address is collected at the contact step. |
 | **One "Full name" field, split to first/last on submit** | Fewer fields = less mobile abandonment (Baymard); the field is split on the last space so sales/CRM still gets structured first + last. |
@@ -106,9 +106,9 @@ src/
     state.ts        reducer + history stack + sessionStorage persistence
     selectors.ts    derived values (place, range, the lead object, name split)
   services/
-    address.ts      suggest() — mock over 8 sample addresses; Google Places seam
-    estimate.ts     getRange() — mock table; revenue-API seam
-  analytics.ts      track() — logs rfi_* events + the lead to the console
+    address.ts      suggest() - mock over 8 sample addresses; Google Places seam
+    estimate.ts     getRange() - mock table; revenue-API seam
+  analytics.ts      track() - logs rfi_* events + the lead to the console
   hooks/
     useFlow.ts      binds the reducer to React + fires analytics on transitions
     useMediaQuery.ts
@@ -146,7 +146,7 @@ completion works.
   Evolve's revenue model.
 - **Analytics** (`analytics.ts`): `track()` logs to the console. Events:
   `rfi_start`, `rfi_step_view`, `rfi_step_complete`, `rfi_exit_ineligible`,
-  `rfi_estimate_view`, `rfi_submit`, `rfi_call_booked` — each with step id, path
+  `rfi_estimate_view`, `rfi_submit`, `rfi_call_booked` - each with step id, path
   and device width. The lead object is logged on submit.
 - **Submission**: none. The lead is logged and never sent.
 
@@ -159,19 +159,19 @@ walked through in the video.
 
 | Change | Step | Estimate |
 |---|---|---|
-| Address suggestions, a stated reason, ZIP accepted | Address | step abandonment ~31% → 24–28% |
-| Earnings range before the contact ask | Contact | step abandonment ~51% → 40–46% (largest upside, least certain) |
-| Reframed, shorter contact screen | Contact | a further 3–8 points off |
+| Address suggestions, a stated reason, ZIP accepted | Address | step abandonment ~31% → 24-28% |
+| Earnings range before the contact ask | Contact | step abandonment ~51% → 40-46% (largest upside, least certain) |
+| Reframed, shorter contact screen | Contact | a further 3-8 points off |
 | Early eligibility screen | Quality | fewer unusable leads |
-| Fewer steps + front-loaded progress bar | Whole flow | 1–3 points |
-| **Combined** | **End to end** | **completion ~33% → 38–47% of starters** |
+| Fewer steps + front-loaded progress bar | Whole flow | 1-3 points |
+| **Combined** | **End to end** | **completion ~33% → 38-47% of starters** |
 
 ### How I'd validate
 
 Randomise at form start; split by traffic source and device. **Primary metric:
 sales-qualified leads per starter.** Guardrails: valid phone/email rate, qualified
 rate per lead, close rate. ~1,400 starters/arm for a 33% → 38% detection at 80%
-power. Pair with 5–8 moderated mobile sessions with recent owners. If there's no
+power. Pair with 5-8 moderated mobile sessions with recent owners. If there's no
 lift: check instrumentation and mobile load time, segment by source/device, test
 the gate position (full estimate ungated vs range-then-gate), and test optional
 phone for owners who are only exploring.

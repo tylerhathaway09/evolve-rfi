@@ -1,5 +1,5 @@
 /* ============================================================================
-   Thin, persistent disclaimer bar. Visible on every screen — this is not an
+   Thin, persistent disclaimer bar. Visible on every screen - this is not an
    Evolve website and no data is collected.
    ============================================================================ */
 

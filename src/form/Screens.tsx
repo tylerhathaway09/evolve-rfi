@@ -408,7 +408,7 @@ function LocationScreen({ answers, errors, dispatch }: Omit<Props, "step">) {
   );
 }
 
-/** A tappable autocomplete result — reads as a results list, not a form card. */
+/** A tappable autocomplete result - reads as a results list, not a form card. */
 function SuggestionRow({
   title,
   sub,
@@ -446,7 +446,7 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
         {bedsLabel(answers)} near {place(answers)} typically earn
       </Heading>
 
-      {/* Payoff figure on a light, calm surface — bold but not a heavy block,
+      {/* Payoff figure on a light, calm surface - bold but not a heavy block,
           so the purple CTA below is the brightest, most prominent element. */}
       <div className="rounded-xl border border-action/15 bg-action-soft px-5 py-5">
         <div className="text-[31px] leading-[1.05] font-extrabold tabular-nums text-plum sm:text-[36px]">
@@ -456,7 +456,7 @@ function EstimateScreen({ answers, dispatch }: { answers: Answers; dispatch: (a:
           a year in bookings
         </div>
         <div className="mt-2.5 text-[12.5px] leading-relaxed text-muted">
-          A range based on similar rentals nearby — not a guarantee.
+          A range based on similar rentals nearby, not a guarantee.
         </div>
       </div>
 
@@ -659,7 +659,7 @@ function ExitBox({
     return (
       <div className="rounded-lg bg-go-soft/60 p-4">
         <p className="font-semibold text-go-deep">
-          Thanks — we'll email {answers.exitEmail}.
+          Thanks. We'll email {answers.exitEmail}.
         </p>
       </div>
     );

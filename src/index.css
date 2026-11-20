@@ -2,7 +2,7 @@
 @import "./styles/tokens.css";
 
 /* ----------------------------------------------------------------------------
-   Base layer — page defaults built on the tokens above.
+   Base layer - page defaults built on the tokens above.
    ---------------------------------------------------------------------------- */
 @layer base {
   :root {
@@ -40,7 +40,7 @@
     text-wrap: balance;
   }
 
-  /* A single, visible focus ring everywhere — keyboard users must never lose
+  /* A single, visible focus ring everywhere - keyboard users must never lose
      their place. */
   :focus-visible {
     outline: 3px solid var(--color-action);
@@ -75,7 +75,7 @@
     border: 0;
   }
 
-  /* Step enter transition — respects reduced motion. */
+  /* Step enter transition - respects reduced motion. */
   .step-enter {
     animation: stepIn 0.28s var(--ease-out) both;
   }

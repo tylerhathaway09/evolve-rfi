@@ -90,12 +90,12 @@ export function nextAfterPick(
  * Front-loaded progress: moves quickly early, slows near the end, so the bar
  * never feels stuck at the start. Villar et al. (2013): fast-start bars reduce
  * drop-off; slow-start bars increase it.
- * Returns an integer 0–100.
+ * Returns an integer 0-100.
  */
 export function progress(id: StepId, path: Path): number {
   const flow = FLOWS[path];
   const i = flow.indexOf(id);
-  if (i < 0) return 0; // exit screens — bar is hidden anyway
+  if (i < 0) return 0; // exit screens - bar is hidden anyway
   const t = id === "done" ? 1 : (i + 1) / flow.length;
   return Math.round((1 - Math.pow(1 - t, 1.6)) * 100);
 }
